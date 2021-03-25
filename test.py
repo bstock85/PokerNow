@@ -20,6 +20,11 @@ def readCSV(filename):
             line_count += 1
         print(f'Processed {line_count} lines.')
 
+"""
+Determine the type of line
+TODO: create a function on useful lines to handle the information
+    replace print statements with returns for useless lines
+"""
 def processLine(line):
     #Hand lines
     if "starting hand" in line:
@@ -34,6 +39,8 @@ def processLine(line):
         print("RIVER")
     
     #Pre Hand Actions
+    elif "Player stacks" in line:
+        print("PLAYER STACKS BY HAND")
     elif "Your hand is" in line:
         print("PLAYER HAND")
     elif "posts a small blind" in line:
@@ -68,8 +75,6 @@ def processLine(line):
         print("UNDEALT CARDS")
 
     #Admin related lines
-    elif "Player stacks" in line:
-        print("PLAYER STACKS BY HAND")
     elif "requested a seat." in line:
         print("REQUEST SEAT")
     elif "The admin approved the player" in line:
