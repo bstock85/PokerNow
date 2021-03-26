@@ -28,15 +28,15 @@ TODO: create a function on useful lines to handle the information
 def processLine(line):
     #Hand lines
     if "starting hand" in line:
-        print("STARTING HAND")
+        startingHand(line)
     elif "ending hand" in line:
-        print("ENDING HAND")
+        endingHand(line)
     elif "Flop" in line:
-        print("FLOP")
+        flop(line)
     elif "Turn" in line:
-        print("TURN")
+        turn(line)
     elif "River" in line:
-        print("RIVER")
+        river(line)
     
     #Pre Hand Actions
     elif "Player stacks" in line:
@@ -98,9 +98,52 @@ def processLine(line):
     else:
         print("Unknown line: ", line)
 
+
+#-- starting hand #2  (No Limit Texas Hold'em) (dealer: "bb @ THAVWp2FAr") --
+def startingHand(line):
+    #print("In starting hand")
+    #print(line)
+    handNum = line.split(" ")[3].split("#")[1]
+    #print(handNum)
+    gameType = line.split(")")[0].split("(")[1]
+    #print(gameType)
+    dealer = line.split(")")[1].split("(")[1].split("\"")[1]
+    #print(dealer)
+    dealerName = dealer.split(" ")[0]
+    #print(dealerName)
+
+#-- ending hand #1 --
+def endingHand(line):
+    #print("In ending hand")
+    #print(line)
+    handNum = line.split(" ")[3].split("#")[1]
+    #print(handNum)
+
+#Flop:  [3?, 8?, 7?]
+def flop(line):
+    #print("In flop")
+    #print(line)
+    cards = line.split("]")[0].split("[")[1].split(", ")
+    #print(cards)
+
+#Turn: 3?, 8?, 7? [3?]
+def turn(line):
+    #print("In turn")
+    #print(line)
+    turnCard = line.split("]")[0].split("[")[1]
+    #print(turnCard)
+
+#River: 3?, 8?, 7?, 3? [4?]
+def river(line):
+    #print("In river")
+    #print(line)
+    riverCard = line.split("]")[0].split("[")[1]
+    #print(riverCard)
+
+
 def main():
     print("Main function")
-    readCSV('./GameData/poker2_15.csv')
+    readCSV('./GameData/pokersimple.csv')
 
 if __name__ == "__main__":
     main()
