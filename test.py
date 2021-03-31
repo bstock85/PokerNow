@@ -42,7 +42,7 @@ def processLine(line):
     elif "Player stacks" in line:
         print("PLAYER STACKS BY HAND")
     elif "Your hand is" in line:
-        print("PLAYER HAND")
+        yourHand(line)
     elif "posts a small blind" in line:
         print("SMALL BLIND")
     elif "posts a big blind" in line:
@@ -140,6 +140,14 @@ def river(line):
     riverCard = line.split("]")[0].split("[")[1]
     #print(riverCard)
 
+#Your hand is Qâ™ , 3â™
+def yourHand(line):
+    #print("in your hand")
+    #print(line)
+    cardOne = line.split(" ")[3].split(",")[0]
+    #print(cardOne)
+    cardTwo = line.split(" ")[4]
+    #print(cardTwo)
 
 def main():
     print("Main function")
