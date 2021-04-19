@@ -132,6 +132,8 @@ def turn(line):
     #print(line)
     turnCard = line.split("]")[0].split("[")[1]
     #print(turnCard)
+    card = Card(turnCard)
+    card.myfunc()
 
 #River: 3?, 8?, 7?, 3? [4?]
 def river(line):
@@ -148,6 +150,37 @@ def yourHand(line):
     #print(cardOne)
     cardTwo = line.split(" ")[4]
     #print(cardTwo)
+    card = Card(cardOne)
+    card.myfunc()
+    card = Card(cardTwo)
+    card.myfunc()
+
+
+class Card:
+  def __init__(self, cardString):
+    print(cardString)
+    number = cardString[0:1]
+    if "10" in cardString:
+        number = "T"
+
+    suit = "error"
+    if "â™£" in cardString:
+        suit = "c"
+    elif "â™¦" in cardString:
+        suit = "d"
+    elif "â™¥" in cardString:
+        suit = "h"
+    elif "â™" in cardString:
+        suit = "s"
+
+    self.number = number #2-9,T,J,Q,K,A
+    self.suit = suit #h,d,c,s
+
+  def myfunc(self):
+    print(self.number,self.suit)
+
+
+
 
 def main():
     print("Main function")
